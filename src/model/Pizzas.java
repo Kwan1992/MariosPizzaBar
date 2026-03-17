@@ -14,5 +14,5 @@ public enum Pizzas {
     HAWAII,
     LE_BLISSOLA,
     VENEZIA,
-    MAFIA
+    MAFIA,
 }
