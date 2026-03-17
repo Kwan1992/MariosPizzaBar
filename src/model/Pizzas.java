@@ -15,5 +15,4 @@ public enum Pizzas {
     LE_BLISSOLA,
     VENEZIA,
     MAFIA,
-    BANANA
 }
