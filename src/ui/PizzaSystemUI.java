@@ -15,7 +15,7 @@ public class PizzaSystemUI {
 
             System.out.println("\nPizzaBar System");
             System.out.println("1. Vis menukort");
-            System.out.println("2. ")
+            System.out.println("2. ");
 
         }
 
