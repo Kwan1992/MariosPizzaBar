@@ -1,5 +1,6 @@
 package file;
 
+import model.Order;
 import model.Pizza;
 import model.PizzaType;
 import util.ExceptionHandler;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class FileHandler {
     private static final String MENU_FILE = "pizzas.csv";
-    private static final String FILE_NAME = "activeOrders.txt";
+    private static final String FILE_NAME = "Orders.csv";
 
     public ArrayList<Pizza> loadPizzas() {
 
@@ -39,13 +40,20 @@ public class FileHandler {
         return pizzas;
     }
 
-    public void saveOrder(ArrayList<Pizza> pizzas) {
+    public void saveOrder(Order order) {
 
         try (BufferedWriter writer =
-                     new BufferedWriter(new FileWriter(FILE_NAME))) {
+                     new BufferedWriter(new FileWriter(FILE_NAME, true))) {
 
-            for (Pizza p : pizzas) {
-                writer.write(p.toString());
+            for (Pizza p : order.getPizzas()) {
+                writer.write(order.getOrderNumber() + "," +
+                        order.getCustomer().getName() + "," +
+                        order.getCustomer().getCustomerType() + "," +
+                        p.getNumber() + "," +
+                        p.getPizzaType() + "," +
+                        p.getPrice() + "," +
+                        order.getCustomer().applyDiscount(p.getPrice()));
+
                 writer.newLine();
             }
 
