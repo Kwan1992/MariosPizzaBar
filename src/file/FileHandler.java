@@ -1,7 +1,6 @@
 package file;
 
 import model.Pizza;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -24,9 +23,9 @@ public class FileHandler {
 
                 String[] parts = line.split(",");
 
-                int number = parts[0];
+                int number = Integer.parseInt(parts[0]);
                 String PizzaType = parts[1];
-                double price = parts[2];
+                double price = Double.parseDouble(parts[2]);
             }
 
         } catch (IOException e) {
@@ -42,7 +41,7 @@ public class FileHandler {
                      new BufferedWriter(new FileWriter(FILE_NAME))) {
 
             for (Pizza p : pizzas) {
-                writer.write(Pizza.toString());
+                writer.write(p.toString());
                 writer.newLine();
             }
 
