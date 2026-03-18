@@ -11,6 +11,7 @@ public class PizzaBarApp {
         FileHandler fileHandler = new FileHandler();
         ArrayList<Pizza> arrayList = fileHandler.loadPizzas();
         System.out.println(arrayList);
+        //test
 
     }
 }
