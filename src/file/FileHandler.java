@@ -7,15 +7,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileHandler {
-    private static final String FILE_NAME = "pizzas.csv";
+    private static final String MENU_FILE = "pizzas.csv";
+    private static final String FILE_NAME = "activeorders.txt";
 
     public ArrayList<Pizza> loadPizzas() {
 
         ArrayList<Pizza> pizzas = new ArrayList<>();
-        File file = new File(FILE_NAME);
+        File file = new File(MENU_FILE);
 
         try (BufferedReader reader =
-                     new BufferedReader(new FileReader(FILE_NAME))) {
+                     new BufferedReader(new FileReader(MENU_FILE))) {
 
             String line;
 
