@@ -2,6 +2,7 @@ package file;
 
 import model.Pizza;
 import model.PizzaType;
+import util.ExceptionHandler;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class FileHandler {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            ExceptionHandler.handle(new ExceptionHandler.FileReadException("Could not read this file: " + MENU_FILE));
+
         }
 
         return pizzas;
