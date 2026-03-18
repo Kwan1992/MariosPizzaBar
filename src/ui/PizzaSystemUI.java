@@ -1,10 +1,16 @@
 package ui;
 
+import file.FileHandler;
+import model.Pizza;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PizzaSystemUI {
 
     private Scanner scanner;
+    private FileHandler fileHandler = new FileHandler();
+
 
     public PizzaSystemUI() {
 
@@ -30,7 +36,8 @@ public class PizzaSystemUI {
             switch (choice) {
 
                 case 1:
-
+                    ArrayList<Pizza> arrayList = fileHandler.loadPizzas();
+                    System.out.println(arrayList);
                     break;
 
                 case 2:
