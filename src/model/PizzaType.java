@@ -1,6 +1,6 @@
 package model;
 
-public enum Pizzas {
+public enum PizzaType {
     VESUVIO,
     AMERIKANER,
     CACCIATORE,
