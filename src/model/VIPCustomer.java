@@ -1,4 +1,4 @@
 package model;
 
-public class VIPCustomer {
+public class VIPCustomer extends CustomerType{
 }

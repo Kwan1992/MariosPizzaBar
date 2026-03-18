@@ -1,4 +1,4 @@
 package model;
 
-public class NormalCustomer {
+public class NormalCustomer extends CustomerType{
 }

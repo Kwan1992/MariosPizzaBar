@@ -1,4 +1,4 @@
 package model;
 
-public class CustomerType {
+public abstract class CustomerType {
 }
