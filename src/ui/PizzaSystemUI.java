@@ -6,6 +6,12 @@ public class PizzaSystemUI {
 
     private Scanner scanner;
 
+    public UserInterface() {
+
+        scanner = new Scanner(System.in);
+    }
+
+
 
     public void start() {
 
