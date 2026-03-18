@@ -9,7 +9,7 @@ public enum PizzaType {
     BERTIL,
     SILVIA,
     VICTORIA,
-    TORONFO,
+    TORONTO,
     CAPPRICIOSA,
     HAWAII,
     LE_BLISSOLA,
