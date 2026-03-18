@@ -45,23 +45,20 @@ public class Order {
     //Laver append her
     @Override
     public String toString() { //Når vi skriver System.out.println(order); bliver den her metode automatisk kaldt
-        //Det er nødvendigt med det her StringBuilder
-        //Den bruges til at bygge tekst fordi vi tilføjer meget tekst i toString
-        StringBuilder sb = new StringBuilder();
-//Append til at tilføje til fil
-        sb.append("Order Nr: " + orderNumber + "\n");
-        sb.append("Kunde: " + customer.getName() + "\n");
-        sb.append("Kundetype: " + customer.getCustomerType() + "\n");
-        sb.append("Pizaer: \n");
+        String text = "";
 
-        //Loop gennem pizzaer så hvis de bliver bestilt vælges de.
+        text += "Order: " + orderNumber + "\n";
+        text += "Kunde: " + customer.getName() + "\n";
+        text += "Kundetype: " + customer.getCustomerType() + "\n";
+        text += "Bestilt:\n";
+
         for (Pizza pizza : pizzas) {
-            sb.append("- " + pizza.getPizzaType() + " - " + pizza.getPrice() + " kr.\n");
+            text += "- " + pizza.getPizzaType() + " - " + pizza.getPrice() + " kr.\n";
         }
-        sb.append("Total: " + calculateTotalPrice() + " kr.\n");
 
-        //StringBuilder er ikke en string så vi skal skrive:
-        return sb.toString();
+        text += "Total: " + calculateTotalPrice() + " kr.\n";
+
+        return text;
     }
 
 }
