@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class FileHandler {
     private static final String MENU_FILE = "pizzas.csv";
-    private static final String FILE_NAME = "activeorders.txt";
+    private static final String FILE_NAME = "activeOrders.txt";
 
     public ArrayList<Pizza> loadPizzas() {
 
