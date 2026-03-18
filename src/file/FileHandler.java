@@ -24,8 +24,8 @@ public class FileHandler {
 
                 String[] parts = line.split(",");
 
-                int id = parts[0];
-                String pizzaName = parts[1];
+                int number = parts[0];
+                String PizzaType = parts[1];
                 double price = parts[2];
             }
 
@@ -36,7 +36,7 @@ public class FileHandler {
         return pizzas;
     }
 
-    public void savePlaylist(ArrayList<Pizza> pizzas) {
+    public void saveOrder(ArrayList<Pizza> pizzas) {
 
         try (BufferedWriter writer =
                      new BufferedWriter(new FileWriter(FILE_NAME))) {
