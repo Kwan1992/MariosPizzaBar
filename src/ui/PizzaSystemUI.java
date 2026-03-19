@@ -6,6 +6,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.time.LocalTime;
 
 public class PizzaSystemUI {
 
@@ -105,12 +106,16 @@ public class PizzaSystemUI {
         } else {
             customerType = new NormalCustomer(name);
         }
+
+        LocalTime orderTime = LocalTime.now();
+        activeOrder = (new Order(orderNumber, customerType, orderTime));
+
         for (int i = 0; i < count; i++) {
             System.out.println(i+1 + ". Pizza");
             System.out.println("Pizza number: 1-30 ");
             int pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
 
-            activeOrder = (new Order(orderNumber, customerType));
+
             activeOrder.addPizza(menuCard.get(pizzaNumber));
             activeMultiOrder.add(activeOrder);
             System.out.println("Pizza added.");
