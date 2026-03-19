@@ -104,7 +104,7 @@ public class PizzaSystemUI {
 
 
         System.out.println("Pizza number: 1-30 ");
-        int pizzaNumber = scanner.nextInt();
+        int pizzaNumber = scanner.nextInt()-1; // minus 1 fordi arraylist er 0 indexeret
 
         activeOrder = (new Order(245, customerType));
         activeOrder.addPizza(menuCard.get(pizzaNumber));
