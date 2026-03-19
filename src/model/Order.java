@@ -66,6 +66,7 @@ public LocalTime getOrderTime(){
         }
 
         text += "Total: " + calculateTotalPrice() + " kr.\n";
+        text += "\n";
 
         return text;
     }
