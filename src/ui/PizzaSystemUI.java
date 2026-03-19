@@ -70,6 +70,7 @@ public class PizzaSystemUI {
                 case 6:
 
                     break;
+
             }
 
         }
@@ -134,6 +135,7 @@ public class PizzaSystemUI {
             System.out.println("Pizza added.");
         }
         activeMultiOrder.add(activeOrder);
+        fileHandler.saveOrder(activeOrder);
 
 
     }
