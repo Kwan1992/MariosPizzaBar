@@ -35,7 +35,10 @@ public class PizzaSystemUI {
             System.out.println("1. Vis menukort");
             System.out.println("2. Opret Order");
             System.out.println("3. Vis liste over aktive bestillinger");
-            System.out.println("4. Fjern og gem order");
+            System.out.println("4. Sorter efter tid");
+            System.out.println("5. Sorter efter ordernr");
+            System.out.println("6. Fjern order");
+
 
             int choice = scanner.nextInt();
 
@@ -55,6 +58,16 @@ public class PizzaSystemUI {
                     break;
 
                 case 4:
+                    Collections.sort(activeMultiOrder, Comparator.comparing(Order::getOrderTime));
+                    System.out.println(activeMultiOrder);
+                    break;
+
+                case 5:
+                    Collections.sort(activeMultiOrder, Comparator.comparing(Order::getOrderNumber));
+                    System.out.println(activeMultiOrder);
+                    break;
+
+                case 6:
 
                     break;
             }
@@ -121,7 +134,6 @@ public class PizzaSystemUI {
             System.out.println("Pizza added.");
         }
         activeMultiOrder.add(activeOrder);
-        Collections.sort(activeMultiOrder, Comparator.comparing(Order::getOrderTime));
 
 
     }
