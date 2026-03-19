@@ -1,17 +1,24 @@
 package model;
 
 import java.util.ArrayList;
+import java.time.LocalTime;
 
 public class Order {
     private int orderNumber;
     private Customer customer;
+    private LocalTime orderTime;
     private ArrayList<Pizza> pizzas;
 
-    public Order(int orderNumber, Customer customer) {
+    public Order(int orderNumber, Customer customer, LocalTime orderTime) {
         this.orderNumber = orderNumber;
         this.customer = customer;
+        this.orderTime = orderTime;
         this.pizzas = new ArrayList<>();
     }
+public LocalTime getOrderTime(){
+        return orderTime;
+}
+
 
     public int getOrderNumber() {
         return orderNumber;
@@ -50,6 +57,8 @@ public class Order {
         text += "Order: " + orderNumber + "\n";
         text += "Kunde: " + customer.getName() + "\n";
         text += "Kundetype: " + customer.getCustomerType() + "\n";
+        text += "Bestilt:\n";
+        text += "Tidspunkt: " + orderTime + "\n";
         text += "Bestilt:\n";
 
         for (Pizza pizza : pizzas) {
