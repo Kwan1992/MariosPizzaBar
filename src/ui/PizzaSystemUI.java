@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.time.LocalTime;
+import java.util.*;
 
 public class PizzaSystemUI {
 
@@ -107,7 +108,7 @@ public class PizzaSystemUI {
             customerType = new NormalCustomer(name);
         }
 
-        LocalTime orderTime = LocalTime.now();
+        LocalTime orderTime = LocalTime.now().withNano(0);
         activeOrder = (new Order(orderNumber, customerType, orderTime));
 
         for (int i = 0; i < count; i++) {
@@ -120,6 +121,7 @@ public class PizzaSystemUI {
             System.out.println("Pizza added.");
         }
         activeMultiOrder.add(activeOrder);
+        Collections.sort(activeMultiOrder, Comparator.comparing(Order::getOrderTime));
 
 
     }

@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.time.LocalTime;
+import java.util.*;
 
 public class Order {
     private int orderNumber;
@@ -57,7 +58,6 @@ public LocalTime getOrderTime(){
         text += "Order number: " + orderNumber + "\n";
         text += "Kunde: " + customer.getName() + "\n";
         text += "Kundetype: " + customer.getCustomerType() + "\n";
-        text += "Bestilt:\n";
         text += "Tidspunkt: " + orderTime + "\n";
         text += "Bestilt:\n";
 
