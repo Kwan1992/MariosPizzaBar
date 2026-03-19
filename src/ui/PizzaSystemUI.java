@@ -1,7 +1,7 @@
 package ui;
 
 import file.FileHandler;
-import model.Pizza;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,13 +10,15 @@ public class PizzaSystemUI {
 
     private Scanner scanner;
     private FileHandler fileHandler = new FileHandler();
+    private Order activeOrder;
+    private ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
+    ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
 
 
     public PizzaSystemUI() {
 
         scanner = new Scanner(System.in);
     }
-
 
 
     public void start() {
@@ -36,16 +38,16 @@ public class PizzaSystemUI {
             switch (choice) {
 
                 case 1:
-                    ArrayList<Pizza> arrayList = fileHandler.loadPizzas();
-                    System.out.println(arrayList);
+                    System.out.println(menuCard);
                     break;
 
                 case 2:
-
+                    askForPizzaCount(scanner);
+                    addPizza();
                     break;
 
                 case 3:
-
+                    System.out.println(activeMultiOrder);
                     break;
 
                 case 4:
@@ -56,4 +58,58 @@ public class PizzaSystemUI {
         }
 
     }
+
+    public static int askForPizzaCount(Scanner sc) {
+
+        int count = 0;
+
+        while (true) {
+
+            System.out.print("How many Pizzas do you want to order? ");
+
+            if (sc.hasNextInt()) {
+                count = sc.nextInt();
+                sc.nextLine(); // Clear buffer
+
+                if (count > 0) {
+                    break;
+                } else {
+                    System.out.println("Please enter a positive number!");
+                }
+            } else {
+                System.out.println("That wasn't a number, try again!");
+                sc.nextLine(); // Clear invalid input
+            }
+        }
+
+        return count;
+    }
+
+    private void addPizza() {
+
+        System.out.println("Customer name");
+        String name = scanner.nextLine();
+
+
+        System.out.println("Customer Type (Normal, VIP, Employee): ");
+        String customerTypeString = scanner.nextLine();
+        Customer customerType;
+        if (customerTypeString.equalsIgnoreCase("VIP")){
+            customerType = new VIPCustomer(name);
+        } else if (customerTypeString.equalsIgnoreCase("Employee")){
+            customerType = new EmployeeCustomer(name);
+        } else {
+            customerType = new NormalCustomer(name);
+        }
+
+
+        System.out.println("Pizza number: 1-30 ");
+        int pizzaNumber = scanner.nextInt();
+
+        activeOrder = (new Order(245, customerType));
+        activeOrder.addPizza(menuCard.get(pizzaNumber));
+        activeMultiOrder.add(activeOrder);
+        System.out.println("Pizza added.");
+    }
+
 }
