@@ -88,6 +88,8 @@ public class PizzaSystemUI {
     }
 
     private void addPizza(int count) {
+        int orderNumber= random.nextInt(10000);
+
 
         System.out.println("Customer name");
         String name = scanner.nextLine();
@@ -108,7 +110,7 @@ public class PizzaSystemUI {
             System.out.println("Pizza number: 1-30 ");
             int pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
 
-            activeOrder = (new Order(random.nextInt(10000), customerType));
+            activeOrder = (new Order(orderNumber, customerType));
             activeOrder.addPizza(menuCard.get(pizzaNumber));
             activeMultiOrder.add(activeOrder);
             System.out.println("Pizza added.");
