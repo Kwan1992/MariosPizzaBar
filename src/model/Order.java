@@ -65,7 +65,7 @@ public LocalTime getOrderTime(){
             text += "- " + pizza.getPizzaType() + " - " + pizza.getPrice() + " kr.\n";
         }
 
-        text += "Total: " + calculateTotalPrice() + " kr.\N";
+        text += "Total: " + calculateTotalPrice() + " kr.\n";
 
         return text;
     }
