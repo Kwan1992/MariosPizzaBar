@@ -15,4 +15,23 @@ public enum PizzaType {
     LE_BLISSOLA,
     VENEZIA,
     MAFIA,
+    MARGHERITA,
+    PEPERONI,
+    PARMA,
+    MEXICANA,
+    DANMARK,
+    SIMON,
+    LINUS,
+    KWAN,
+    VILLA,
+    ANIKO,
+    JARL,
+    ROMANA,
+    CALZONE,
+    UFO,
+    DIAVOLA,
+    VIKING
+
+
+
 }
