@@ -4,6 +4,7 @@ import file.FileHandler;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class PizzaSystemUI {
@@ -13,6 +14,7 @@ public class PizzaSystemUI {
     private Order activeOrder;
     private ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
     ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
+    Random random = new Random();
 
 
     public PizzaSystemUI() {
@@ -42,8 +44,8 @@ public class PizzaSystemUI {
                     break;
 
                 case 2:
-                    askForPizzaCount(scanner);
-                    addPizza();
+                    int count=askForPizzaCount(scanner);
+                    addPizza(count);
                     break;
 
                 case 3:
@@ -85,7 +87,7 @@ public class PizzaSystemUI {
         return count;
     }
 
-    private void addPizza() {
+    private void addPizza(int count) {
 
         System.out.println("Customer name");
         String name = scanner.nextLine();
@@ -94,22 +96,23 @@ public class PizzaSystemUI {
         System.out.println("Customer Type (Normal, VIP, Employee): ");
         String customerTypeString = scanner.nextLine();
         Customer customerType;
-        if (customerTypeString.equalsIgnoreCase("VIP")){
+        if (customerTypeString.equalsIgnoreCase("VIP")) {
             customerType = new VIPCustomer(name);
-        } else if (customerTypeString.equalsIgnoreCase("Employee")){
+        } else if (customerTypeString.equalsIgnoreCase("Employee")) {
             customerType = new EmployeeCustomer(name);
         } else {
             customerType = new NormalCustomer(name);
         }
+        for (int i = 0; i < count; i++) {
+            System.out.println(i+1 + ". Pizza");
+            System.out.println("Pizza number: 1-30 ");
+            int pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
 
+            activeOrder = (new Order(random.nextInt(10000), customerType));
+            activeOrder.addPizza(menuCard.get(pizzaNumber));
+            activeMultiOrder.add(activeOrder);
+            System.out.println("Pizza added.");
+        }
 
-        System.out.println("Pizza number: 1-30 ");
-        int pizzaNumber = scanner.nextInt()-1; // minus 1 fordi arraylist er 0 indexeret
-
-        activeOrder = (new Order(245, customerType));
-        activeOrder.addPizza(menuCard.get(pizzaNumber));
-        activeMultiOrder.add(activeOrder);
-        System.out.println("Pizza added.");
     }
-
 }

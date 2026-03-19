@@ -47,7 +47,7 @@ public class Order {
     public String toString() { //Når vi skriver System.out.println(order); bliver den her metode automatisk kaldt
         String text = "";
 
-        text += "Order: " + orderNumber + "\n";
+        text += "Order number: " + orderNumber + "\n";
         text += "Kunde: " + customer.getName() + "\n";
         text += "Kundetype: " + customer.getCustomerType() + "\n";
         text += "Bestilt:\n";
