@@ -14,7 +14,6 @@ import java.util.*;
 
 
 public class PizzaSystem {
-    private Scanner scanner;
     private FileHandler fileHandler = new FileHandler();
     private Order activeOrder;
     public ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
