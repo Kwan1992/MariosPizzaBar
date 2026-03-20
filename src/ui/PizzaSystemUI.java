@@ -15,8 +15,8 @@ public class PizzaSystemUI {
     private FileHandler fileHandler = new FileHandler();
     private Order activeOrder;
     private ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
-    ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
-    Random random = new Random();
+    private ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
+    private Random random = new Random();
 
 
     public PizzaSystemUI() {
