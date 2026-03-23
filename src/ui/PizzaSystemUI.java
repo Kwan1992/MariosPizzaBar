@@ -12,16 +12,8 @@ import static service.PizzaSystem.askForPizzaCount;
 
 public class PizzaSystemUI {
 
-    private Scanner scanner;
+    Scanner scanner = new Scanner(System.in);
     PizzaSystem pizzaSystem = new PizzaSystem();
-
-
-    public PizzaSystemUI() {
-
-        scanner = new Scanner(System.in);
-
-    }
-
 
     public void start() {
 
@@ -66,7 +58,7 @@ public class PizzaSystemUI {
                     break;
 
                 case 6:
-                    Collections.sort(pizzaSystem.activeMultiOrder, Comparator.comparing(Order::getOrderNumber));
+                    BestillingSorter.sortByOrderNumber(pizzaSystem.activeMultiOrder);
                     System.out.println(pizzaSystem.activeMultiOrder);
                     pizzaSystem.removeOrder(scanner);
                     break;

@@ -13,7 +13,6 @@ public class FileHandler {
     private static final String FILE_NAME = "Orders.csv";
 
     public ArrayList<Pizza> loadPizzas() {
-
         ArrayList<Pizza> pizzas = new ArrayList<>();
         File file = new File(MENU_FILE);
 
