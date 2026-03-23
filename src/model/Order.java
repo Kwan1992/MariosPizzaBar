@@ -20,7 +20,6 @@ public LocalTime getOrderTime(){
         return orderTime;
 }
 
-
     public int getOrderNumber() {
         return orderNumber;
     }
@@ -37,10 +36,6 @@ public LocalTime getOrderTime(){
         pizzas.add(pizza);
     }
 
-    public void removePizza(Pizza pizza) {
-        pizzas.remove(pizza);
-    }
-
     public double calculateTotalPrice() {
         double total = 0;
 
@@ -55,7 +50,7 @@ public LocalTime getOrderTime(){
     public String toString() { //Når vi skriver System.out.println(order); bliver den her metode automatisk kaldt
         String text = "";
 
-        text += "Order number: " + orderNumber + "\n";
+        text += "Ordre nummer: " + orderNumber + "\n";
         text += "Kunde: " + customer.getName() + "\n";
         text += "Kundetype: " + customer.getCustomerType() + "\n";
         text += "Tidspunkt: " + orderTime + "\n";
