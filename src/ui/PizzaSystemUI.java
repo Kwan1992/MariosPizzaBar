@@ -29,8 +29,14 @@ public class PizzaSystemUI {
             System.out.println("5. Sorter efter ordernr");
             System.out.println("6. Fjern order");
 
-
-            int choice = scanner.nextInt();
+            int choice = 0;
+            if(scanner.hasNextInt())
+            {
+                choice = scanner.nextInt();
+            } else {
+                System.out.println("invalid input");
+                scanner.nextLine();
+            }
 
             switch (choice) {
 
