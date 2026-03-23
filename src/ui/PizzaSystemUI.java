@@ -65,7 +65,9 @@ public class PizzaSystemUI {
                     break;
 
                 case 6:
-
+                    Collections.sort(pizzaSystem.activeMultiOrder, Comparator.comparing(Order::getOrderNumber));
+                    System.out.println(pizzaSystem.activeMultiOrder);
+                    pizzaSystem.removeOrder(scanner);
                     break;
 
             }

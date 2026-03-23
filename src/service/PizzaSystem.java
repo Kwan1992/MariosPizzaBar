@@ -86,4 +86,28 @@ public class PizzaSystem {
 
 
     }
+    private Order findOrder(int orderNumber) {
+
+        for (Order order : activeMultiOrder) {
+            if (Objects.equals(order.getOrderNumber(), orderNumber)) {
+                return order;
+            }
+        }
+        return null;
+    }
+
+    public void removeOrder(Scanner scanner) {
+
+        System.out.print("Enter order number to remove: ");
+        int orderNumber = scanner.nextInt();
+
+        Order found = findOrder(orderNumber);
+
+        if (found != null) {
+            activeMultiOrder.remove(found);
+            System.out.println("Order removed.");
+        } else {
+            System.out.println("Order not found.");
+        }
+    }
 }
