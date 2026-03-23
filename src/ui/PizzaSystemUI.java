@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 import service.PizzaSystem;
+import util.BestillingSorter;
 
 
 import java.util.Scanner;
@@ -55,12 +56,12 @@ public class PizzaSystemUI {
                     break;
 
                 case 4:
-                    Collections.sort(pizzaSystem.activeMultiOrder, Comparator.comparing(Order::getOrderTime));
+                    BestillingSorter.sortByTime(pizzaSystem.activeMultiOrder);
                     System.out.println(pizzaSystem.activeMultiOrder);
                     break;
 
                 case 5:
-                    Collections.sort(pizzaSystem.activeMultiOrder, Comparator.comparing(Order::getOrderNumber));
+                    BestillingSorter.sortByOrderNumber(pizzaSystem.activeMultiOrder);
                     System.out.println(pizzaSystem.activeMultiOrder);
                     break;
 
