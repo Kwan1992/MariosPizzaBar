@@ -58,7 +58,7 @@ public class FileHandler {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            ExceptionHandler.handle(new ExceptionHandler.FileWriteException("Could not write this file: " + FILE_NAME));
         }
     }
 }
