@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.*;
 
 import static service.PizzaSystem.askForPizzaCount;
+import static util.ConsoleColors.*;
 
 public class PizzaSystemUI {
 
@@ -21,13 +22,13 @@ public class PizzaSystemUI {
 
         while (running) {
 
-            System.out.println("\nPizzaBar System");
-            System.out.println("1. Vis menukort");
-            System.out.println("2. Opret Order");
-            System.out.println("3. Vis liste over aktive bestillinger");
-            System.out.println("4. Sorter efter tid");
-            System.out.println("5. Sorter efter ordernr");
-            System.out.println("6. Fjern order");
+            System.out.println(red +"\nPizzaBar" + green + "System");
+            System.out.println(reset + "1. Vis menukort");
+            System.out.println(blue + "2. Opret Order");
+            System.out.println(purple + "3. Vis liste over aktive bestillinger");
+            System.out.println(yellow + "4. Sorter efter tid");
+            System.out.println(cyan + "5. Sorter efter ordernr");
+            System.out.println(reset + "6. Fjern order");
 
             int choice = 0;
             if(scanner.hasNextInt())
