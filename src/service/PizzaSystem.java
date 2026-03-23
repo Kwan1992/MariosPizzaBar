@@ -16,14 +16,13 @@ public class PizzaSystem {
     public ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
     public ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
     private Random random = new Random();
-
     public static int askForPizzaCount(Scanner sc) {
 
         int count = 0;
 
         while (true) {
 
-            System.out.print("How many Pizzas do you want to order? ");
+            System.out.print("Hvor mange pizzaer vil du bestille? ");
 
             if (sc.hasNextInt()) {
                 count = sc.nextInt();
@@ -32,10 +31,10 @@ public class PizzaSystem {
                 if (count > 0) {
                     break;
                 } else {
-                    System.out.println("Please enter a positive number!");
+                    System.out.println("Vær så venlig at indtaste et positivt nummer!");
                 }
             } else {
-                System.out.println("That wasn't a number, try again!");
+                System.out.println("Det var ikke et nummer, prøv igen!");
                 sc.nextLine(); // Clear invalid input
             }
         }
@@ -43,16 +42,16 @@ public class PizzaSystem {
         return count;
     }
 
-    public void addPizza(int count, Scanner scanner) {
+    public void addPizza(int count,Scanner scanner) {
         int orderNumber = random.nextInt(10000);
 
 
-        System.out.println("Customer name");
+        System.out.println("Kunde navn: ");
         String name = scanner.nextLine();
 
         Customer customerType;
-        while (true) {
-            System.out.println("Customer Type (Normal, VIP, Employee): ");
+        while(true) {
+            System.out.println("Kunde Type (Normal, VIP, Employee): ");
             String customerTypeString = scanner.nextLine();
             if (customerTypeString.equalsIgnoreCase("VIP")) {
                 customerType = new VIPCustomer(name);
@@ -64,35 +63,26 @@ public class PizzaSystem {
                 customerType = new NormalCustomer(name);
                 break;
             } else {
-                System.out.println("invalid input");
+                System.out.println("invalidt input");
             }
         }
         LocalTime orderTime = LocalTime.now().withNano(0);
         activeOrder = (new Order(orderNumber, customerType, orderTime));
 
         for (int i = 0; i < count; i++) {
-            int pizzaNumber;
-            while (true) {
-                System.out.println(i + 1 + ". Pizza");
-                System.out.println("Pizza number: 1-30 ");
-                pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
-                if (pizzaNumber > 30 | pizzaNumber < 1) {
-                    System.out.println("invalid input");
-                } else {
-                    break;
-                }
-            }
+            System.out.println(i + 1 + ". Pizza");
+            System.out.println("Pizza nummer: 1-30 ");
+            int pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
 
 
             activeOrder.addPizza(menuCard.get(pizzaNumber));
-            System.out.println("Pizza added.");
+            System.out.println("Pizza tilføjet.");
         }
         activeMultiOrder.add(activeOrder);
         fileHandler.saveOrder(activeOrder);
 
 
     }
-
     private Order findOrder(int orderNumber) {
 
         for (Order order : activeMultiOrder) {
@@ -105,16 +95,16 @@ public class PizzaSystem {
 
     public void removeOrder(Scanner scanner) {
 
-        System.out.print("Enter order number to remove: ");
+        System.out.print("Indtast ordre nummer du vil fjerne: ");
         int orderNumber = scanner.nextInt();
 
         Order found = findOrder(orderNumber);
 
         if (found != null) {
             activeMultiOrder.remove(found);
-            System.out.println("Order removed.");
+            System.out.println("Ordre fjernet.");
         } else {
-            System.out.println("Order not found.");
+            System.out.println("Ordre ikke fundet.");
         }
     }
 }
