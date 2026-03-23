@@ -52,7 +52,7 @@ public class FileHandler {
                         p.getNumber() + "," +
                         p.getPizzaType() + "," +
                         p.getPrice() + "," +
-                        order.getCustomer().applyDiscount(p.getPrice()));
+                        order.calculateTotalPrice());
 
                 writer.newLine();
             }
