@@ -16,6 +16,7 @@ public class PizzaSystem {
     public ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
     public ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
     private Random random = new Random();
+
     public static int askForPizzaCount(Scanner sc) {
 
         int count = 0;
@@ -42,7 +43,7 @@ public class PizzaSystem {
         return count;
     }
 
-    public void addPizza(int count,Scanner scanner) {
+    public void addPizza(int count, Scanner scanner) {
         int orderNumber = random.nextInt(10000);
 
 
@@ -50,7 +51,7 @@ public class PizzaSystem {
         String name = scanner.nextLine();
 
         Customer customerType;
-        while(true) {
+        while (true) {
             System.out.println("Customer Type (Normal, VIP, Employee): ");
             String customerTypeString = scanner.nextLine();
             if (customerTypeString.equalsIgnoreCase("VIP")) {
@@ -70,9 +71,18 @@ public class PizzaSystem {
         activeOrder = (new Order(orderNumber, customerType, orderTime));
 
         for (int i = 0; i < count; i++) {
-            System.out.println(i + 1 + ". Pizza");
-            System.out.println("Pizza number: 1-30 ");
-            int pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
+            int pizzaNumber;
+            while (true) {
+                System.out.println(i + 1 + ". Pizza");
+                System.out.println("Pizza number: 1-30 ");
+                pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
+                if (pizzaNumber > 30 | pizzaNumber < 1) {
+                    System.out.println("invalid input");
+                } else {
+                    scanner.nextLine();
+                    break;
+                }
+            }
 
 
             activeOrder.addPizza(menuCard.get(pizzaNumber));
@@ -83,6 +93,7 @@ public class PizzaSystem {
 
 
     }
+
     private Order findOrder(int orderNumber) {
 
         for (Order order : activeMultiOrder) {
