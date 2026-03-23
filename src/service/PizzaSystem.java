@@ -52,18 +52,23 @@ public class PizzaSystem {
         System.out.println("Customer name");
         String name = scanner.nextLine();
 
-
-        System.out.println("Customer Type (Normal, VIP, Employee): ");
-        String customerTypeString = scanner.nextLine();
         Customer customerType;
-        if (customerTypeString.equalsIgnoreCase("VIP")) {
-            customerType = new VIPCustomer(name);
-        } else if (customerTypeString.equalsIgnoreCase("Employee")) {
-            customerType = new EmployeeCustomer(name);
-        } else {
-            customerType = new NormalCustomer(name);
+        while(true) {
+            System.out.println("Customer Type (Normal, VIP, Employee): ");
+            String customerTypeString = scanner.nextLine();
+            if (customerTypeString.equalsIgnoreCase("VIP")) {
+                customerType = new VIPCustomer(name);
+                break;
+            } else if (customerTypeString.equalsIgnoreCase("Employee")) {
+                customerType = new EmployeeCustomer(name);
+                break;
+            } else if (customerTypeString.equalsIgnoreCase("Normal")) {
+                customerType = new NormalCustomer(name);
+                break;
+            } else {
+                System.out.println("invalid input");
+            }
         }
-
         LocalTime orderTime = LocalTime.now().withNano(0);
         activeOrder = (new Order(orderNumber, customerType, orderTime));
 
