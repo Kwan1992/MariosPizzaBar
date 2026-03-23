@@ -79,7 +79,6 @@ public class PizzaSystem {
                 if (pizzaNumber > 30 | pizzaNumber < 1) {
                     System.out.println("invalid input");
                 } else {
-                    scanner.nextLine();
                     break;
                 }
             }
