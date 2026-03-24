@@ -37,6 +37,7 @@ public class PizzaSystem {
                 System.out.println("Det var ikke et nummer, prøv igen!");
                 sc.nextLine(); // Clear invalid input
             }
+            sc.nextLine();
         }
 
         return count;
