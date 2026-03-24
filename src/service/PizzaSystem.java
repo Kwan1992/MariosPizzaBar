@@ -78,7 +78,7 @@ public class PizzaSystem {
                 System.out.println("Pizza number: 1-30 ");
                 if (scanner.hasNextInt()) {
                     pizzaNumber = scanner.nextInt() - 1;
-                    if (pizzaNumber > 30 | pizzaNumber < 1) {
+                    if (pizzaNumber > 29 | pizzaNumber < 0) {
                         System.out.println("invalid input");
                     } else {
                         scanner.nextLine();
