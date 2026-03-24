@@ -16,6 +16,7 @@ public class PizzaSystem {
     public ArrayList<Order> activeMultiOrder = new ArrayList<Order>();
     public ArrayList<Pizza> menuCard = fileHandler.loadPizzas();
     private Random random = new Random();
+
     public static int askForPizzaCount(Scanner sc) {
 
         int count = 0;
@@ -43,7 +44,7 @@ public class PizzaSystem {
         return count;
     }
 
-    public void addPizza(int count,Scanner scanner) {
+    public void addPizza(int count, Scanner scanner) {
         int orderNumber = random.nextInt(10000);
 
 
@@ -51,7 +52,7 @@ public class PizzaSystem {
         String name = scanner.nextLine();
 
         Customer customerType;
-        while(true) {
+        while (true) {
             System.out.println("Kunde Type (Normal, VIP, Employee): ");
             String customerTypeString = scanner.nextLine();
             if (customerTypeString.equalsIgnoreCase("VIP")) {
@@ -75,12 +76,17 @@ public class PizzaSystem {
             while (true) {
                 System.out.println(i + 1 + ". Pizza");
                 System.out.println("Pizza number: 1-30 ");
-                pizzaNumber = scanner.nextInt() - 1; // minus 1 fordi arraylist er 0 indexeret
-                if (pizzaNumber > 30 | pizzaNumber < 1) {
-                    System.out.println("invalid input");
+                if (scanner.hasNextInt()) {
+                    pizzaNumber = scanner.nextInt() - 1;
+                    if (pizzaNumber > 30 | pizzaNumber < 1) {
+                        System.out.println("invalid input");
+                    } else {
+                        scanner.nextLine();
+                        break;
+                    }
                 } else {
-                    scanner.nextLine();
-                    break;
+                    System.out.println("Det var ikke et nummer, prøv igen!");
+                    scanner.nextLine(); // Clear invalid input
                 }
             }
             activeOrder.addPizza(menuCard.get(pizzaNumber));
@@ -91,6 +97,7 @@ public class PizzaSystem {
 
 
     }
+
     private Order findOrder(int orderNumber) {
 
         for (Order order : activeMultiOrder) {
@@ -104,15 +111,26 @@ public class PizzaSystem {
     public void removeOrder(Scanner scanner) {
 
         System.out.print("Indtast ordre nummer du vil fjerne: ");
-        int orderNumber = scanner.nextInt();
+        int orderNumber;
+        if (scanner.hasNextInt()) {
+            orderNumber = scanner.nextInt();
+            scanner.nextLine(); // Clear buffer
 
-        Order found = findOrder(orderNumber);
 
-        if (found != null) {
-            activeMultiOrder.remove(found);
-            System.out.println("Ordre fjernet.");
+            Order found = findOrder(orderNumber);
+
+            if (found != null) {
+                activeMultiOrder.remove(found);
+                System.out.println("Ordre fjernet.");
+                return;
+            } else {
+                System.out.println("Ordre ikke fundet.");
+                return;
+            }
         } else {
-            System.out.println("Ordre ikke fundet.");
+            System.out.println("Det var ikke et nummer, prøv igen!");
+            scanner.nextLine(); // Clear invalid input
         }
+        scanner.nextLine();
     }
 }
