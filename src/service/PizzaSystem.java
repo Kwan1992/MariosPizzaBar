@@ -89,7 +89,7 @@ public class PizzaSystem {
                     scanner.nextLine(); // Clear invalid input
                 }
             }
-            activeOrder.addPizza(menuCard.get(pizzaNumber));
+            activeOrder.addPizzaToOrder(menuCard.get(pizzaNumber));
             System.out.println("Pizza tilføjet.");
         }
         activeMultiOrder.add(activeOrder);

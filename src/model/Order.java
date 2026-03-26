@@ -32,7 +32,7 @@ public LocalTime getOrderTime(){
         return pizzas;
     }
 
-    public void addPizza(Pizza pizza) {
+    public void addPizzaToOrder(Pizza pizza) {
         pizzas.add(pizza);
     }
 
