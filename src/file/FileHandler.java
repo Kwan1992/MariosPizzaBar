@@ -14,7 +14,6 @@ public class FileHandler {
 
     public ArrayList<Pizza> loadPizzas() {
         ArrayList<Pizza> pizzas = new ArrayList<>();
-        File file = new File(MENU_FILE);
 
         try (BufferedReader reader =
                      new BufferedReader(new FileReader(MENU_FILE))) {
